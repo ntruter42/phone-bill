@@ -1,4 +1,26 @@
+div {
+	outline: 1px solid #a8f0;
+}
+
+textarea, input {
+	width: 100%;
+}
+
+button {
+	width: 100%;
+}
+
+.reset-button {
+	background-color: grey !important;
+	border: 1px solid grey !important;
+}
+
+.reset-button:hover {
+	background-color: #666 !important;
+}
+
 .box {
+	background-image: linear-gradient(-20deg, #faf4, #faa8, #aaff);
   padding: 0.75em;
   border-radius : 0.5em;
   border : 1px solid #ddd;
@@ -19,4 +41,8 @@
 .total {
   font-weight: bold;
   font-size: 2em;
+}
+
+.calculateBtn {
+	color: black !important;
 }

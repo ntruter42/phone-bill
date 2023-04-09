@@ -1,13 +1,35 @@
-//get a reference to the calculate button
+const calculateBtn = document.querySelector(".calculateBtn");
+const billTotalElement = document.querySelector(".billTotal");
+const totalElement = document.querySelector(".total")
+const billStringElement = document.querySelector(".billString");
 
-//get a reference to the billTotal element
+function calculateBtnClicked() {
+	const billItems = billStringElement.value.split(",");
+	let billTotal = 0;
 
-//get a reference to the billString
+	for (let billItem of billItems) {
+		billItem = billItem.trim();
+		if (billItem === "call") {
+			billTotal += 2.75;
+		}
+		else if (billItem === "sms") {
+			billTotal += 0.75;
+		}
+	}
 
-//create the function that will be called when the calculate button is pressed
-//  * this function should read the string value entered - split it on a comma.
-//  * loop over all the entries in the the resulting list
-//  * check if it is a call or an sms and add the right amount to the overall total
-//  * once done looping over all the entries - display the total onto the screen in the billTotal element
+	totalElement.classList.remove("warning", "danger");
+	billTotalElement.classList.remove("warning", "danger");
+	if (billTotal > 30) {
+		totalElement.classList.add("danger");
+		billTotalElement.classList.add("danger");
+	}
+	else if (billTotal > 20) {
+		totalElement.classList.add("warning");
+		billTotalElement.classList.add("warning");
+	}
 
-//link the function to a click event on the calculate button
+	const roundedBillTotal = billTotal.toFixed(2);
+	billTotalElement.innerHTML = roundedBillTotal;
+}
+
+calculateBtn.addEventListener('click', calculateBtnClicked);
